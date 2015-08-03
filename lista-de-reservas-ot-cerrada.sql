@@ -1,0 +1,18 @@
+
+-------------------------
+--RESERVA  OT  CERRADAS
+-----------------------
+RESERVAS OT 
+SELECT TOP 500* FROM [020BDCOMUN].DBO.RESERVA_CAB WHERE
+ESTADO='00'  AND  OT!=' '  AND  
+OT  NOT IN (
+SELECT  OF_COD FROM [011BDCOMUN].DBO.ORD_FAB  WHERE OF_ESTADO='ACTIVO')
+ORDER BY OT
+
+
+-------------------------
+--OT  ACTIVAS
+-----------------------
+
+SELECT TOP 200 OF_COD FROM  [011BDCOMUN].dbo.ORD_FAB
+WHERE  OF_ESTADO='ACTIVO'
